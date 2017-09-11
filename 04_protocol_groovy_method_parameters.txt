@@ -1,0 +1,77 @@
+> // method Parameters
+>
+> def a(a= "1") {
+>     println(a)
+> }
+>
+> a()
+1
+
+> // method Parameters
+>
+> def a(params) {
+>     println(params)
+> }
+>
+> a(a: 1, b: 2)
+[a:1, b:2]
+
+> // method Parameters
+>
+> class User {
+>     def firstName
+>     def lastName
+> }
+>
+> def newUser(values = [:]) {
+>     def defaultValues = [
+>             firstName: "Tim",
+>             lastName: "Steffens"
+>     ]
+>     new User(defaultValues + values)
+> }
+>
+> def u = newUser()
+> //def u = newUser(firstName: "Arnold", lastName: "Schwarzenegger")
+> u.firstName + " " + u.lastName
+Result: Tim Steffens
+
+> // method Parameters
+>
+> class User {
+>     def firstName
+>     def lastName
+> }
+>
+> def newUser(values = [:]) {
+>     def defaultValues = [
+>             firstName: "Tim",
+>             lastName: "Steffens"
+>     ]
+>     new User(defaultValues + values)
+> }
+>
+> //def u = newUser()
+> def u = newUser(firstName: "Arnold", lastName: "Schwarzenegger")
+> u.firstName + " " + u.lastName
+Result: Arnold Schwarzenegger
+
+> // method Parameters
+>
+> class User {
+>     def firstName
+>     def lastName
+> }
+>
+> def newUser(values = [:]) {
+>     def defaultValues = [
+>             firstName: "Tim",
+>             lastName: "Steffens"
+>     ]
+>     new User(defaultValues + values)
+> }
+>
+> //def u = newUser()
+> def u = newUser(firstName: "Arnold")
+> u.firstName + " " + u.lastName
+Result: Arnold Steffens

@@ -1,0 +1,159 @@
+> // Closures
+> { _ -> 2 + 3} ()
+Result: 5
+
+> // Closures
+> def a = { _ -> 2 + 3}
+> a()
+Result: 5
+
+> // Closures
+> def a = { i -> 2 + i}
+> a(1)
+Result: 3
+
+> // Closures
+> def a = { 2 + it}
+> a(1)
+Result: 3
+
+> // Closures
+> def a = { 2 + 4}
+> a(1)
+Result: 6
+
+> // Closures
+> def a = {2 + it}
+>
+> def higherOrder(call, i) {
+>     call(i)
+> }
+>
+> higherOrder(a, 1)
+Result: 3
+
+> // Closures
+>
+> withDbConnection(Closure dbCode) {
+>     // new connection a
+>     def a = "connection"
+>     dbCode(a)
+>     // close a
+> }
+>
+> withDbConnection {
+>     conn -> conn.preparedStatment("...")
+> }
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+
+ideaGroovyConsole.groovy: 3: Invalid use of declaration inside method call.
+ @ line 3, column 18.
+   withDbConnection(Closure dbCode) {
+                    ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:310)
+	at org.codehaus.groovy.control.CompilationUnit.applyToPrimaryClassNodes(CompilationUnit.java:1073)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:591)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:569)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:546)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:298)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:268)
+	at groovy.lang.GroovyShell.parseClass(GroovyShell.java:688)
+	at groovy.lang.GroovyShell.run(GroovyShell.java:517)
+	at groovy.lang.GroovyShell.run(GroovyShell.java:497)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSite.invoke(PogoMetaMethodSite.java:169)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.call(PogoMetaMethodSite.java:71)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at console.run(console.txt:25)
+	at groovy.ui.GroovyMain.processReader(GroovyMain.java:632)
+	at groovy.ui.GroovyMain.processFiles(GroovyMain.java:540)
+	at groovy.ui.GroovyMain.run(GroovyMain.java:382)
+	at groovy.ui.GroovyMain.process(GroovyMain.java:370)
+	at groovy.ui.GroovyMain.processArgs(GroovyMain.java:129)
+	at groovy.ui.GroovyMain.main(GroovyMain.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.groovy.tools.GroovyStarter.rootLoader(GroovyStarter.java:109)
+	at org.codehaus.groovy.tools.GroovyStarter.main(GroovyStarter.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.CommandLineWrapper.main(CommandLineWrapper.java:65)
+> // Closures
+>
+> def withDbConnection(Closure dbCode) {
+>     // new connection a
+>     def a = "connection"
+>     dbCode(a)
+>     // close a
+> }
+>
+> withDbConnection {
+>     conn -> conn.preparedStatment("...")
+> }
+.. does not compile, because it's just pseudo-code
+
+> // Closures
+>
+> def exectureCode(parameter, code) {
+>     code(parameter)
+> }
+>
+> def prnt = { param -> println(param) }
+>
+> exectureCode("Hallo", prnt)
+Hallo
+
+> // Closures
+>
+>
+> def exectureCode(parameter, code) {
+>     code(parameter)
+> }
+>
+> //def prnt = { param -> println(param) }
+>
+> def prnt(param) {println(param)}
+>
+> exectureCode("Hallo", prnt)
+
+groovy.lang.MissingPropertyException: No such property: prnt for class: ideaGroovyConsole
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:53)
+	at org.codehaus.groovy.runtime.callsite.PogoGetPropertySite.getProperty(PogoGetPropertySite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGroovyObjectGetProperty(AbstractCallSite.java:307)
+	at ideaGroovyConsole.run(ideaGroovyConsole.groovy:22)
+	at groovy.lang.GroovyShell.runScriptOrMainOrTestOrRunnable(GroovyShell.java:263)
+	at groovy.lang.GroovyShell.run(GroovyShell.java:518)
+	at groovy.lang.GroovyShell.run(GroovyShell.java:497)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSite.invoke(PogoMetaMethodSite.java:169)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.call(PogoMetaMethodSite.java:71)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at console.run(console.txt:25)
+	at groovy.ui.GroovyMain.processReader(GroovyMain.java:632)
+	at groovy.ui.GroovyMain.processFiles(GroovyMain.java:540)
+	at groovy.ui.GroovyMain.run(GroovyMain.java:382)
+	at groovy.ui.GroovyMain.process(GroovyMain.java:370)
+	at groovy.ui.GroovyMain.processArgs(GroovyMain.java:129)
+	at groovy.ui.GroovyMain.main(GroovyMain.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.groovy.tools.GroovyStarter.rootLoader(GroovyStarter.java:109)
+	at org.codehaus.groovy.tools.GroovyStarter.main(GroovyStarter.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.CommandLineWrapper.main(CommandLineWrapper.java:65)

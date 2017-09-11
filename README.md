@@ -5,20 +5,21 @@
     * groovy plugin
     * groovy console
     * scripts
-* basics
-    * [groovy_cheat_sheet.pdf](groovy_cheat_sheet.pdf)
-    * equality
-    * ;
-    * script language / compile time checks
-    * types / def
-    * return
-    * privacy
-* core constructs
-    * strings
-        * interpolation
-        * plain
-        * multiline
-            * stripMargin
+* Groovy
+    * basics
+        * [groovy_cheat_sheet.pdf](groovy_cheat_sheet.pdf)
+        * equality
+        * ;
+        * script language / compile time checks
+        * types / def
+        * return
+        * braces
+        * privacy
+        * strings
+            * interpolation
+            * plain
+            * multiline
+                * stripMargin
     * closures
     * collections
         * lists
@@ -31,13 +32,13 @@
         * for constructors
         * test data generation methods
     * traits
-* JSON
-    * JsonBuilder
-    * JsonSlurper
-* http
-    * https://github.com/jgritman/httpbuilder/wiki
-    * ```python -m SimpleHTTPServer 8000```
-    * ```new RESTClient("localhost:8000")```
+    * JSON
+        * JsonBuilder
+        * JsonSlurper
+    * http
+        * https://github.com/jgritman/httpbuilder/wiki
+        * ```python -m SimpleHTTPServer 8000```
+        * ```new RESTClient("http://localhost:8000")```
 * Spock
     * given, when, then, and (, setup, cleanup, expect)
     * assert

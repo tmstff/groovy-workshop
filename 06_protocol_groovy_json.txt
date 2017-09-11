@@ -1,0 +1,102 @@
+//JSON
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> new JsonBuilder([some: "JSON"]).toPrettyString()
+Result: {
+    "some": "JSON"
+}
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> new JsonBuilder([some: "JSON"]).toString()
+Result: {"some":"JSON"}
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> def builder = new JsonBuilder()
+> builder.some {
+>     more "JSON"
+> }
+>
+> builder.toPrettyString()
+Result: {
+    "some": {
+        "more": "JSON"
+    }
+}
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> def builder = new JsonBuilder()
+> builder.some {
+>     more: "JSON"
+> }
+>
+> builder.toPrettyString()
+Result: {
+    "some": {
+
+    }
+}
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> def builder = new JsonBuilder()
+> builder.some (
+>     more: "JSON"
+> )
+>
+> builder.toPrettyString()
+Result: {
+    "some": {
+        "more": "JSON"
+    }
+}
+
+> import groovy.json.JsonBuilder
+>
+> // JSON
+>
+> def builder = new JsonBuilder()
+> builder.some {
+>     more("JSON")
+>     other(
+>             json: "String"
+>     )
+> }
+>
+> builder.toPrettyString()
+Result: {
+    "some": {
+        "more": "JSON",
+        "other": {
+            "json": "String"
+        }
+    }
+}
+
+> import groovy.json.JsonSlurper
+>
+> // JSON
+>
+> new JsonSlurper().parseText('{"some": "JSON"}')
+Result: [some:JSON]
+
+> import groovy.json.JsonSlurper
+>
+> // JSON
+>
+> def json = new JsonSlurper().parseText('{"some": "JSON"}')
+> json.some
+Result: JSON

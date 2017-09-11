@@ -1,0 +1,41 @@
+// REST
+
+
+> // REST
+> import groovyx.net.http.RESTClient
+>
+> def rc = new RESTClient("http://localhost:8000")
+>
+> rc.get(path: "example.json")
+Result: groovyx.net.http.HttpResponseDecorator@6941827a
+
+> // REST
+> import groovyx.net.http.RESTClient
+>
+> def rc = new RESTClient("http://localhost:8000")
+>
+> def response = rc.get(path: "example.json")
+>
+> response.properties
+Result: [headers:groovyx.net.http.HttpResponseDecorator$HeadersDecorator@7e928e2f, class:class groovyx.net.http.HttpResponseDecorator, entity:org.apache.http.conn.BasicManagedEntity@f667fe, status:200, contentType:application/json, locale:de_DE, allHeaders:[Server: SimpleHTTP/0.6 Python/2.7.13, Date: Mon, 11 Sep 2017 13:29:05 GMT, Content-type: application/json, Content-Length: 20, Last-Modified: Thu, 07 Sep 2017 14:14:05 GMT], params:org.apache.http.impl.client.ClientParamsStack@788fcafb, data:[some:JSON], context:groovyx.net.http.HttpContextDecorator@4febb875, success:true, statusLine:HTTP/1.0 200 OK, protocolVersion:HTTP/1.0]
+
+> // REST
+> import groovyx.net.http.RESTClient
+>
+> def rc = new RESTClient("http://localhost:8000")
+>
+> def response = rc.get(path: "example.json")
+>
+> response.data
+Result: [some:JSON]
+
+> // REST
+> import groovyx.net.http.RESTClient
+>
+> def rc = new RESTClient("http://localhost:8000")
+>
+> def response = rc.get(path: "example.json")
+>
+> response.data.some
+Result: JSON
+
