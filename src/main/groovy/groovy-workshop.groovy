@@ -1,6 +1,16 @@
 class User {
     def firstName
     def lastName
+
+    @Override
+    boolean equals(Object obj) {
+        return firstName == obj.firstName && lastName == obj.lastName
+    }
+
+    @Override
+    String toString() {
+        return "User $firstName $lastName"
+    }
 }
 
 trait Aging {
