@@ -47,11 +47,11 @@
     * logging / problem with traits
     * exceptions
     * where + @Unroll
+    * mocks
+    * declaration
+    * behaviour
+    * verification
+    * dependency injection
     * real-world-examples
-        * mocks
-        * declaration
-        * behaviour
-        * verification
-        * dependency injection
         * spock + spring
         * waitFor / TODO Waiting
