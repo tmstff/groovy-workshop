@@ -16,6 +16,17 @@ class ExampleSpec extends Specification {
         given: "a string"
         def s = "I am a String"
 
+        when: "the length is determined"
+        def length = s.length()
+
+        then: "the length is correct"
+        length == 13
+    }
+
+    def "extended example for given-when-then-structure"() {
+        given: "a string"
+        def s = "I am a String"
+
         and: "backup copy of original String"
         def orgS = s
 
@@ -36,12 +47,20 @@ class ExampleSpec extends Specification {
         assert newS == "I am a String-test"
     }
 
+    def "setup works"() {
+        expect:
+        now > 0
+        now instanceof Long
+        System.currentTimeMillis() >= now
+    }
+
     def "test object equality"() {
         when:
         def user1 = new User(firstName: "Tim", lastName: "Steffens")
         def user2 = new User(firstName: "Tim", lastName: "Steffens")
         then:
         user1.equals(user2)
+        user1 == user2
     }
 
     def "acessing a map with 'with'"() {
@@ -64,7 +83,6 @@ class ExampleSpec extends Specification {
         now < System.currentTimeMillis()
 
     }
-
 
     def "exception handling"() {
         when:
