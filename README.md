@@ -48,10 +48,10 @@
     * exceptions
     * where + @Unroll
     * mocks
-    * declaration
-    * behaviour
-    * verification
-    * dependency injection
+        * declaration
+        * behaviour
+        * verification
+        * dependency injection
     * real-world-examples
         * spock + spring
         * waitFor / TODO Waiting
