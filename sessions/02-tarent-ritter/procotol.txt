@@ -1,0 +1,162 @@
+Result: A
+> // lists
+> def l = [1,2]
+>
+> l[0]
+
+Result: 1
+> // maps
+> def m = [a:"A", b:"B"]
+>
+> m["a"]
+
+Result: A
+> // closures
+>
+> def c = { a -> a * a }
+>
+> c(2)
+
+Result: 4
+> // closures
+>
+> def c = { it * 2 }
+>
+> c(2)
+
+Result: 4
+
+> // named parameters workaround
+>
+> def createUser(Map params) {
+>     params = [name: "Testuser", adress: "Testadresse"] + params
+>
+>     return params
+> }
+>
+> createUser([:])
+
+Result: [name:Testuser, adress:Testadresse]
+> // named parameters workaround
+>
+> def createUser(Map params = [:]) {
+>     params = [name: "Testuser", adress: "Testadresse"] + params
+>
+>     return params
+> }
+>
+> createUser()
+
+Result: [name:Testuser, adress:Testadresse]
+> // named parameters workaround
+>
+> def createUser(Map params = [:]) {
+>     params = [name: "Testuser", adress: "Testadresse"] + params
+>
+>     return params
+> }
+>
+> createUser(name: "Tim")
+
+Result: [name:Tim, adress:Testadresse]
+> // Objekte Instanziieren
+>
+> class User {
+>     String name
+>     String address
+> }
+>
+> new User()
+
+> // Objekte Instanziieren
+>
+> class User {
+>     String name
+>     String address
+> }
+>
+> groovy.json.JsonOutput.toJson(new User())
+
+Result: {"address":null,"name":null}
+> // Objekte Instanziieren
+>
+> class User {
+>     String name
+>     String address
+> }
+>
+> groovy.json.JsonOutput.toJson(new User(name: "Tim"))
+
+Result: {"address":null,"name":"Tim"}
+> // Objekte Instanziieren
+>
+> class User {
+>     String name
+>     String address
+> }
+>
+> groovy.json.JsonOutput.toJson(new User(name: "Tim", address: "abc"))
+
+Result: {"address":"abc","name":"Tim"}
+> import groovy.json.JsonBuilder
+> import groovy.json.JsonOutput
+>
+> // Json builder
+>
+> def builder = new JsonBuilder()
+>
+> JsonOutput.toJson(
+>     builder.user (
+>             name: "Tim",
+>             address: "Uhlandstr. 1"
+>     )
+> )
+
+Result: {"user":{"name":"Tim","address":"Uhlandstr. 1"}}
+> import groovy.json.JsonOutput
+>
+> // Json via Map
+>
+>
+> JsonOutput.toJson(
+>     [user: [
+>             name: "Tim",
+>             address: "Uhlandstr. 1"
+>         ]
+>     ]
+> )
+
+Result: {"user":{"name":"Tim","address":"Uhlandstr. 1"}}
+
+> import groovy.json.JsonOutput
+>
+> // Json via multile Strings
+>
+> """
+>     {"user":
+>         {"name": "Tim"}
+>     }
+> """
+
+Result:
+    {"user":
+        {"name": "Tim"}
+    }
+
+> import groovy.json.JsonOutput
+>
+> // Json via multile Strings
+>
+> def a = """
+> {"user":
+>     {"name": "Tim"}
+> }
+> """
+>
+> a
+
+Result:
+{"user":
+    {"name": "Tim"}
+}
+

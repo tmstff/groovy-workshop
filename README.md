@@ -20,6 +20,7 @@
             * plain
             * multiline
                 * stripMargin
+        * regexp
     * closures
     * collections
         * lists
